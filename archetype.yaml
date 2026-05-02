@@ -1,0 +1,19 @@
+---
+description: "EditorConfig — composable .editorconfig and .gitattributes generator"
+summary: >
+  Composable `.editorconfig` generator for Archetect. Ships per-language
+  section fragments (Rust, Java, JavaScript, Python, YAML, Markdown) and
+  renders a single `.editorconfig` by concatenating the selected ones,
+  plus an optional standard `.gitattributes`. Most often consumed by
+  parent archetypes via `require("editor-config")` and a single
+  `editor_config.run(context, opts)` call; usable standalone to drop
+  these files into an existing project.
+authors: ["Jimmie Fulton <jimmie.fulton@gmail.com>"]
+tags: ["library", "editorconfig", "gitattributes"]
+
+requires:
+  archetect: "3.0.0"
+
+templating:
+  trim_blocks: true
+  lstrip_blocks: true

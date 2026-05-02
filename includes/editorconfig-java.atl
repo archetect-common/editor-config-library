@@ -1,0 +1,9 @@
+
+[*.java]
+indent_size = 4
+
+[*.{gradle,gradle.kts}]
+indent_size = 4
+
+[pom.xml]
+indent_size = 2

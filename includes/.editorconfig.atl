@@ -1,0 +1,19 @@
+{% include "editorconfig-root.atl" %}
+{% if contains(editorconfig_languages, "Rust") then %}
+{% include "editorconfig-rust.atl" %}
+{% end %}
+{% if contains(editorconfig_languages, "Java") then %}
+{% include "editorconfig-java.atl" %}
+{% end %}
+{% if contains(editorconfig_languages, "JavaScript") then %}
+{% include "editorconfig-javascript.atl" %}
+{% end %}
+{% if contains(editorconfig_languages, "Python") then %}
+{% include "editorconfig-python.atl" %}
+{% end %}
+{% if contains(editorconfig_languages, "YAML") then %}
+{% include "editorconfig-yaml.atl" %}
+{% end %}
+{% if contains(editorconfig_languages, "Markdown") then %}
+{% include "editorconfig-markdown.atl" %}
+{% end %}
