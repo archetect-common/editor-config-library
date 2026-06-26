@@ -114,6 +114,31 @@ mount-key prefix is honored without hardcoding:
 {% include components.editor_config.section_includes.gitattributes %}
 ```
 
+## Usage — `catalog.render()` one-shot
+
+Skip `library: true` when you only need the files written and don't need
+`components.editor_config.section_includes` for custom template composition.
+The catalog-level `destination` controls where `.editorconfig` is written:
+
+```yaml
+# parent archetype.yaml
+catalog:
+  editor-config:
+    source: "https://github.com/archetect-common/editor-config-library.git#v1"
+```
+
+```lua
+-- parent archetype.lua
+context:set("editorconfig_languages", { "Rust", "YAML", "Markdown" })
+context:set("editorconfig_gitattributes", true)
+catalog.render("editor-config", context, { destination = context:get("project-name") })
+```
+
+Note: `components.editor_config` is only published when mounted with `library: true`
+— the library gates that publication to `archetype.is_library()`. If you need raw
+partial access via `components.editor_config.section_includes`, use `library: true`
+and the two-phase API above.
+
 ## Usage — standalone
 
 Drop `.editorconfig` (and `.gitattributes`) into the current directory:

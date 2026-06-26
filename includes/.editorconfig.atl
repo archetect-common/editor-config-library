@@ -2,8 +2,14 @@
 {% if contains(editorconfig_languages, "Rust") then %}
 {% include "editorconfig-rust.atl" %}
 {% end %}
+{% if contains(editorconfig_languages, "Go") then %}
+{% include "editorconfig-go.atl" %}
+{% end %}
 {% if contains(editorconfig_languages, "Java") then %}
 {% include "editorconfig-java.atl" %}
+{% end %}
+{% if contains(editorconfig_languages, "CSharp") then %}
+{% include "editorconfig-csharp.atl" %}
 {% end %}
 {% if contains(editorconfig_languages, "JavaScript") then %}
 {% include "editorconfig-javascript.atl" %}

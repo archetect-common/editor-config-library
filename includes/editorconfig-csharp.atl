@@ -1,0 +1,6 @@
+
+[*.{cs,csx,razor}]
+indent_size = 4
+
+[*.{csproj,vbproj,fsproj,sln,props,targets}]
+indent_size = 2

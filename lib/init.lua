@@ -33,7 +33,9 @@ local M = {}
 -- `includes/editorconfig-<name>.atl` and add the name here.
 M.languages = {
     "Rust",
+    "Go",
     "Java",
+    "CSharp",
     "JavaScript",
     "Python",
     "YAML",
@@ -48,7 +50,9 @@ M.languages = {
 -- without knowing the prefix.
 local SECTION_FILENAMES = {
     Rust       = "editorconfig-rust.atl",
+    Go         = "editorconfig-go.atl",
     Java       = "editorconfig-java.atl",
+    CSharp     = "editorconfig-csharp.atl",
     JavaScript = "editorconfig-javascript.atl",
     Python     = "editorconfig-python.atl",
     YAML       = "editorconfig-yaml.atl",
@@ -83,12 +87,13 @@ function M.prompt(context, opts)
         })
     end
 
-    -- Publish a `components.editor_config` entry only when we're being
-    -- mounted as a library — standalone runs have no parent that would
-    -- read the structured component map. The published `section_includes`
-    -- carry the parent's catalog map-key as a prefix, so consumer
-    -- templates can `{% include components.editor_config.section_includes.rust %}`
-    -- without knowing the mount name.
+    -- Publish `components.editor_config` while still in the prompt phase,
+    -- not finalize. The two-phase boundary is: prompt contributes context
+    -- (including structured component maps); finalize writes files. Parents
+    -- need `components.editor_config.section_includes.*` available before
+    -- their own `directory.render()` call — which happens between prompt
+    -- and finalize — so this must live here. Only publish when mounted as
+    -- a library; standalone runs have no parent consuming the component map.
     if archetype.is_library() then
         local section_includes = {
             root          = archetype.include_path("editorconfig-root.atl"),

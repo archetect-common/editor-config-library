@@ -1,0 +1,6 @@
+
+[*.go]
+indent_style = tab
+
+[*.{mod,sum,work}]
+indent_style = tab
